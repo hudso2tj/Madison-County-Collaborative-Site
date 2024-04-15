@@ -20,15 +20,6 @@ CREATE TABLE UserData(
 	FOREIGN KEY (UserID) REFERENCES [User](UserID)
 );
 
-CREATE TABLE KnowledgeItem(
-	KnowledgeID int IDENTITY(1,1) PRIMARY KEY,
-	Title NVARCHAR(200),
-	Category NVARCHAR(50),
-	Information NVARCHAR(300),
-	UserID int,
-	FOREIGN KEY (UserID) REFERENCES [User](UserID)
-);
-
 CREATE TABLE Chat (
 	Chat_ID INT PRIMARY KEY IDENTITY,
 	Message TEXT,
