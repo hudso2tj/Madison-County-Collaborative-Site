@@ -1,0 +1,78 @@
+--SQL CODE FOR LAB3 DB
+
+-- Create Tables
+
+CREATE TABLE [User](
+	UserID int IDENTITY(1,1) PRIMARY KEY,
+	Username NVARCHAR(25),
+	FirstName NVARCHAR(15),
+	LastName NVARCHAR(30),
+	Email NVARCHAR(40),
+	Phone BIGINT,
+	Address NVARCHAR(100),
+	UserType NVARCHAR(50)
+);
+
+CREATE TABLE UserData(
+	DataID int IDENTITY(1,1) PRIMARY KEY,
+	Date DateTime,
+	UserID int,
+	FOREIGN KEY (UserID) REFERENCES [User](UserID)
+);
+
+CREATE TABLE KnowledgeItem(
+	KnowledgeID int IDENTITY(1,1) PRIMARY KEY,
+	Title NVARCHAR(200),
+	Category NVARCHAR(50),
+	Information NVARCHAR(300),
+	UserID int,
+	FOREIGN KEY (UserID) REFERENCES [User](UserID)
+);
+
+CREATE TABLE Chat (
+	Chat_ID INT PRIMARY KEY IDENTITY,
+	Message TEXT,
+	Username VARCHAR(255),
+	Timestamp DATETIME DEFAULT GETDATE()
+);
+
+CREATE TABLE BudgetChat (
+	Chat_ID INT PRIMARY KEY IDENTITY,
+	Message TEXT,
+	Username VARCHAR(255),
+	Timestamp DATETIME DEFAULT GETDATE()
+);
+
+CREATE TABLE EcoDevChat (
+	Chat_ID INT PRIMARY KEY IDENTITY,
+	Message TEXT,
+	Username VARCHAR(255),
+	Timestamp DATETIME DEFAULT GETDATE()
+);
+
+CREATE TABLE CitizenChat (
+	Chat_ID INT PRIMARY KEY IDENTITY,
+	Message TEXT,
+	Username VARCHAR(255),
+	Timestamp DATETIME DEFAULT GETDATE()
+)
+
+CREATE TABLE PolicyChat (
+	Chat_ID INT PRIMARY KEY IDENTITY,
+	Message TEXT,
+	Username VARCHAR(255),
+	Timestamp DATETIME DEFAULT GETDATE()
+)
+
+-- Insert Statements:
+
+-- Insert into [User] table
+INSERT INTO [User] (Username, FirstName, LastName, Email, Phone, Address, UserType) 
+VALUES ('john_doe', 'John', 'Doe', 'john.doe@example.com', 1234567890, '123 Main St', 'Finance');
+
+INSERT INTO [User] (Username, FirstName, LastName, Email, Phone, Address, UserType) 
+VALUES ('admin','Jane', 'Smith', 'jane.smith@example.com', 9876543210, '456 Elm St', 'Admin');
+
+-- Insert into UserData table
+INSERT INTO UserData (Date, UserID) VALUES (GETDATE(), 1);
+INSERT INTO UserData (Date, UserID) VALUES (GETDATE(), 2);
