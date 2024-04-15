@@ -1,0 +1,14 @@
+﻿@page
+@model Lab3.Pages.Practice.SecureLoginLandingModel
+@{
+}
+
+@{
+    if (@ViewData["LoginMessage"] != null)
+    {
+        <p>@ViewData["LoginMessage"]</p>
+        <p>User Type: @HttpContext.Session.GetString("userType");</p>
+        <a asp-page="DBLogin" asp-route-logout="true">Logout</a>
+    }
+
+}
